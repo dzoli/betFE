@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../../shared/models/user.model';
 
 @Component({
   selector: 'app-register',
@@ -6,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  // public user: User = new User();
-  // public errors: any[] = [];
+  public user: User = new User();
+  public errors: any[] = [];
 
   constructor() { }
 
