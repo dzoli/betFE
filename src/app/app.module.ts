@@ -7,6 +7,10 @@ import { AppComponent } from './app.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import {RegisterComponent} from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
+import { SharedModule } from './shared/shared.module';
+import {NgxPaginationModule} from 'ngx-pagination'; // check docs: https://www.npmjs.com/package/ngx-pagination
+import { OrderModule } from 'ngx-order-pipe'; // check docs: https://www.npmjs.com/package/ngx-order-pipe
+
 
 
 @NgModule({
@@ -19,7 +23,10 @@ import { LoginComponent } from './components/login/login.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    SharedModule,
+    NgxPaginationModule,
+    OrderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
