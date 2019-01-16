@@ -9,7 +9,8 @@ import {RegisterComponent} from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { SharedModule } from './shared/shared.module';
 import {NgxPaginationModule} from 'ngx-pagination'; // check docs: https://www.npmjs.com/package/ngx-pagination
-import { OrderModule } from 'ngx-order-pipe'; // check docs: https://www.npmjs.com/package/ngx-order-pipe
+import { OrderModule } from 'ngx-order-pipe';
+import { HomeComponent } from './components/home/home/home.component'; // check docs: https://www.npmjs.com/package/ngx-order-pipe
 
 
 
@@ -18,7 +19,8 @@ import { OrderModule } from 'ngx-order-pipe'; // check docs: https://www.npmjs.c
     AppComponent,
     LayoutComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

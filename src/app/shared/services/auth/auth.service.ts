@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs'; 
+import { Observable, of, Observer } from 'rxjs'; 
 import { HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { User } from '../../models/user.model';
@@ -14,8 +14,9 @@ export class AuthService {
   public isAuthenticated: boolean;
   public isAdmin: boolean;
   public isUser: boolean;
+  public isOfficer: boolean;
 
-  public user: User;
+  public user: any;
   public head: any;
 
   constructor(private http: HttpClient, private router: Router) {
@@ -42,8 +43,28 @@ export class AuthService {
     });
   }
 
+  public login(email: string, password: string){
+      return new Observable((o: Observer<any>) => {
+        this.http.post('/betWS/user/login', {
+            'email': email,
+            'password': password
+        }, this.head).subscribe((data) => {
+            this.isAuthenticated = true;
+            this.router.navigateByUrl('/home');
+            this.user = data;
+            this.isAdmin = this.user.role === 'admin';
+            this.isOfficer = this.user.role === 'officer';
+            this.isUser = this.user.role === 'user';
+            o.next(data);
+            return o.complete();
+        }, (err) => {
+            return o.error(err)
+        });
+      });
+  }
+
+
   public getRequestHeaders(): HttpHeaders {
     return new HttpHeaders().set('Content-Type', 'application/json');
-    
   }
 }
