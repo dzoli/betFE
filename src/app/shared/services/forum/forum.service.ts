@@ -24,7 +24,7 @@ export class ForumService {
     }
 
     public addMessageToTopic(idTheme: number, idUser: number, comment: string) {
-        let url = '/betWS/forum/idTheme/save';
+        let url = '/betWS/forum/'+idTheme+'/save';
         return new Observable((o: any) => {
             this.http.post(url, {
                 "idTheme": idTheme,

@@ -19,8 +19,9 @@ export class ForumComponent implements OnInit {
         private forumService: ForumService,
         private router: Router) {
         let currentUser = this.authService.getLoggedUser();
+
         this.forumService.getThemes()
-            .subscribe(res => { this.data = res });
+            .subscribe(res => { this.data = res; console.log(res) });
         this.idUser = authService.getLoggedUser().idUser;
     }
 
