@@ -6,6 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 
 import { from } from 'rxjs';
 import { HomeComponent } from './components/home/home.component';
+import { ForumComponent } from './components/forum/forum/forum.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
       path: 'home',
       component: HomeComponent
+  },
+  {
+      path: 'forum',
+      component: ForumComponent
   }
 
 ];

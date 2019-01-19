@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ForumService {
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private auth: AuthService) { }
 
     // get all
     public getThemes() {
-        let url = '/betWS/all';
+        let url = '/betWS/forum/all';
         return new Observable((o: any) => {
             this.http.post(url, {}).subscribe((data) => {
                 o.next(data);
@@ -23,7 +24,7 @@ export class ForumService {
     }
 
     public addMessageToTopic(idTheme: number, idUser: number, comment: string) {
-        let url = '/betWS/idTheme/save';
+        let url = '/betWS/forum/idTheme/save';
         return new Observable((o: any) => {
             this.http.post(url, {
                 "idTheme": idTheme,
@@ -39,7 +40,7 @@ export class ForumService {
     }
 
     public saveTopic(name: string, desc: string, idUser: number) {
-        let url = '/betWS/save';
+        let url = '/betWS/forum/save';
         return new Observable((o: any) => {
             this.http.post(url, {
                 "name": name,

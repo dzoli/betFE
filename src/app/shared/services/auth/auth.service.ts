@@ -72,4 +72,16 @@ export class AuthService {
     public getRequestHeaders(): HttpHeaders {
         return new HttpHeaders().set('Content-Type', 'application/json');
     }
+
+    public getLoggedUserParams(): any{
+        let user = {
+            'email' : this.user.email,
+            'password' : this.user.password
+        }
+        return user;
+    }
+    
+    public getLoggedUser(): any{
+        return this.user;
+    }
 }
