@@ -4,19 +4,19 @@ import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth/auth.service';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
-export class GuestGuard implements CanActivate {
-
-    constructor(private router: Router, private auth: AuthService){}
-
+export class AuthGuard implements CanActivate {
+    constructor(
+        private router: Router,
+        private authService: AuthService) {
+    }
 
     canActivate(routeSnapshot: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        console.log("=== snapshot", routeSnapshot);
-        console.log("=== state", state);
-        if (this.auth.isAuthenticated) {
-            this.router.navigate(['/register']);
-        }     
+        if (!this.authService.isAuthenticated) {
+            this.router.navigate(['/login']);
+        }
+
         return true;
     }
 }
