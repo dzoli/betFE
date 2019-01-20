@@ -52,6 +52,7 @@ export class AuthService {
                 this.isAuthenticated = true;
                 this.router.navigateByUrl('/home');
                 this.user = data;
+                console.log("logged user", this.user);
                 this.isAdmin = this.user.role === 'admin';
                 this.isOfficer = this.user.role === 'officer';
                 this.isUser = this.user.role === 'user';

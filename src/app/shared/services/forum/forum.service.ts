@@ -27,9 +27,8 @@ export class ForumService {
         let url = '/betWS/forum/'+idTheme+'/save';
         return new Observable((o: any) => {
             this.http.post(url, {
-                "idTheme": idTheme,
-                "idUser": idUser,
-                "commentContent": comment
+                "creator": this.auth.getLoggedUser(),
+                "text": comment
             }).subscribe((data) => {
                 o.next(data);
                 return o.complete();
@@ -44,11 +43,9 @@ export class ForumService {
         return new Observable((o: any) => {
             this.http.post(url, {
                 "name": name,
-                "description": desc,
-                "time": Date.now(),
-                "user": {
-                    "idUser": idUser
-                }
+                "description": desc, // time cuvas na serveru
+                "created": Date.now(), 
+                "creator": this.auth.getLoggedUser()
             }).subscribe((data) => {
                 o.next(data);
                 return o.complete();

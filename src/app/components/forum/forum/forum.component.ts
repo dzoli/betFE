@@ -22,16 +22,19 @@ export class ForumComponent implements OnInit {
 
         this.forumService.getThemes()
             .subscribe(res => { this.data = res; console.log(res) });
-        this.idUser = authService.getLoggedUser().idUser;
+        this.idUser = authService.getLoggedUser()._id;
     }
 
     saveComment(idTheme, commentContent) {
         this.forumService.addMessageToTopic(idTheme, this.idUser, commentContent)
-            .subscribe((res) => { this.data = res });
+            .subscribe((res) => { 
+                console.log(res);
+                this.data = res 
+            });
     }
 
     createTheme(name: HTMLInputElement, desc: HTMLInputElement) {
-        console.log("name == " + name + " | " + desc);
+        console.log(" aa " + this.authService.getLoggedUser());
         this.forumService.saveTopic(name.value, desc.value, this.idUser)
             .subscribe((res) => { this.data = res });
         name.value = '';
