@@ -85,4 +85,8 @@ export class AuthService {
     public getLoggedUser(): any{
         return this.user;
     }
+
+    public getCurrentUserCredit(): number{
+        return this.user.credit;
+    }
 }

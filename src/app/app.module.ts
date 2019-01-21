@@ -11,7 +11,7 @@ import { SharedModule } from './shared/shared.module';
 import {NgxPaginationModule} from 'ngx-pagination'; // check docs: https://www.npmjs.com/package/ngx-pagination
 import { OrderModule } from 'ngx-order-pipe';
 import { HomeComponent } from './components/home/home.component';
-import { ForumComponent } from './components/forum/forum/forum.component'; // check docs: https://www.npmjs.com/package/ngx-order-pipe
+import { ForumComponent } from './components/forum/forum.component'; // check docs: https://www.npmjs.com/package/ngx-order-pipe
 import { NotifyService } from './shared/services/notify/notify.service';
 
 
