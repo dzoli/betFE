@@ -89,4 +89,8 @@ export class AuthService {
     public getCurrentUserCredit(): number{
         return this.user.credit;
     }
+
+    public setCurrentCredit(credit: number){
+        this.user.credit = credit;
+    }
 }

@@ -26,4 +26,19 @@ export class TicketService {
         });
     }
 
+    public getGames() {
+        let url = '/betWS/ticket/game/'+Date.now();
+        return new Observable((o: any) => {
+            this.http.get(url, {
+           		
+            }).subscribe((data) => {
+                    o.next(data);
+                    return o.complete();
+                }, (err) => {
+                    return o.error(err);
+                });
+        });
+    }
+
+
 }

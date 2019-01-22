@@ -1,5 +1,5 @@
 <!-- add credit -->
-<h3 class="text-center" *ngIf="auth.isAuthenticated">Welcome {{ auth.user?.username }} Credit: <mark>{{ currCredit}}</mark> </h3>
+<h3 class="text-center" *ngIf="auth.isAuthenticated">Welcome {{ auth.user?.username }} Credit: <mark>{{ auth.user.credit}}</mark> </h3>
 <div class="input-group mb-6" *ngIf="auth.isAuthenticated">
     <input type="text" class="form-control" placeholder="Add credit:..." aria-label="Add credit:..." aria-describedby="basic-addon1"
         [(ngModel)]="deltaCredit">
@@ -8,3 +8,42 @@
     </span>
 </div>
 
+<h2>Games:</h2>
+<table class="table table-striped">
+    <thead class="bg-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Time</th>
+            <th scope="col">City</th>
+            <th scope="col">Home</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col">Away</th>
+            <th>1</th>
+            <th>X</th>
+            <th>2</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let g of data.games let idx = index;">
+            <td scope="row">{{idx + 1}}</td>
+            <td>{{g.time}}</td>
+            <td>{{g.city}}</td>
+            <td>{{g.team1.name}}</td>
+            <td>{{g.homeScore}}</td>
+            <td>-</td>
+            <td>{{g.awayScore}}</td>
+            <td>{{g.team2.name}}</td>
+            <td>
+                <button (click)="addToTicket(g.team1.name, g.team2.name, g.idMatch, g.homeOdd, 1)" class="btn btn-primary" [disabled]="!auth.isAuthenticated">1 kv.({{g.homeOdd}}) </button>
+            </td>
+            <td>
+                <button (click)="addToTicket(g.team1.name, g.team2.name, g.idMatch, g.egalOdd, 0)" class="btn btn-primary" [disabled]="!auth.isAuthenticated">x kv.({{g.egalOdd}}) </button>
+            </td>
+            <td>
+                <button (click)="addToTicket(g.team1.name, g.team2.name, g.idMatch, g.awayOdd, 2)" class="btn btn-primary" [disabled]="!auth.isAuthenticated">2 kv.({{g.awayOdd}}) </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

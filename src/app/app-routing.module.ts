@@ -10,34 +10,34 @@ import { ForumComponent } from './components/forum/forum.component';
 
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: '/home',
-    pathMatch: 'full' 
-  },
-  {
-    path: 'register',
-    canActivate: [GuestGuard],
-    component: RegisterComponent
-  },
-  {
-    path: 'login',
-    canActivate: [GuestGuard],
-    component: LoginComponent
-  },
-  {
-      path: 'home',
-      component: HomeComponent
-  },
-  {
-      path: 'forum',
-      component: ForumComponent
-  }
+    {
+        path: '',
+        redirectTo: '/home',
+        pathMatch: 'full'
+    },
+    {
+        path: 'register',
+        canActivate: [GuestGuard],
+        component: RegisterComponent
+    },
+    {
+        path: 'login',
+        canActivate: [GuestGuard],
+        component: LoginComponent
+    },
+    {
+        path: 'home',
+        component: HomeComponent
+    },
+    {
+        path: 'forum',
+        component: ForumComponent
+    }
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }
