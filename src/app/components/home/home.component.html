@@ -28,7 +28,7 @@
     <tbody>
         <tr *ngFor="let g of data.games let idx = index;">
             <td scope="row">{{idx + 1}}</td>
-            <td>{{g.time}}</td>
+            <td>{{g.time | date}}</td>
             <td>{{g.city}}</td>
             <td>{{g.team1.name}}</td>
             <td>{{g.homeScore}}</td>
