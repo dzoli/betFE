@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,7 +13,9 @@ import { OrderModule } from 'ngx-order-pipe';
 import { HomeComponent } from './components/home/home.component';
 import { ForumComponent } from './components/forum/forum.component'; // check docs: https://www.npmjs.com/package/ngx-order-pipe
 import { NotifyService } from './shared/services/notify/notify.service';
-
+import { MaterialModule } from './material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormService } from './shared/services/form/form.service';
 
 
 @NgModule({
@@ -31,9 +33,12 @@ import { NotifyService } from './shared/services/notify/notify.service';
     FormsModule,
     SharedModule,
     NgxPaginationModule,
-    OrderModule
+    BrowserAnimationsModule,
+    OrderModule,
+    MaterialModule,
+    ReactiveFormsModule
   ],
-  providers: [NotifyService],
+  providers: [NotifyService, FormService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

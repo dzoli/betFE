@@ -12,7 +12,7 @@ export class TicketService {
 
 
     public addCredit(credit: number) {
-        let url = '/betWS/user/addCredit';
+        const url = '/betWS/user/addCredit';
         return new Observable((o: any) => {
             this.http.post(url, {
                 'user': this.auth.getLoggedUser(),
@@ -27,16 +27,16 @@ export class TicketService {
     }
 
     public getGames() {
-        let url = '/betWS/ticket/game/'+Date.now();
+        const url = '/betWS/ticket/game/' + Date.now();
         return new Observable((o: any) => {
             this.http.get(url, {
-           		
+
             }).subscribe((data) => {
-                    o.next(data);
-                    return o.complete();
-                }, (err) => {
-                    return o.error(err);
-                });
+                o.next(data);
+                return o.complete();
+            }, (err) => {
+                return o.error(err);
+            });
         });
     }
 

@@ -1,7 +1,7 @@
 <hr>
 <h3>Login</h3>
 <hr>
-
+<!--
 <form #loginForm="ngForm" (ngSubmit)="login(email.value, password.value)">
     <div class="form-group">
         <label>Email address</label>
@@ -13,4 +13,24 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Login</button>
+</form> -->
+<form [formGroup]="form.loginForm" class="normal-form">
+    <mat-grid-list cols="1" rowHeight="500px">
+        <mat-grid-tile>
+            <div class="controles-container">
+                <mat-form-field>
+                    <input formControlName="email" matInput placeholder="Email*" #email>
+                    <mat-error>Invalid email address.</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input formControlName="password" matInput placeholder="Password*" #password>
+                    <mat-error>Invalid password.</mat-error>
+                </mat-form-field>
+                <div class="button-row">
+                  <button mat-raised-button color="primary" (click)="login(email.value, password.value)" [disabled]="form.loginForm.invalid" type="submit">Login</button>
+                  <button mat-raised-button color="secondary" (click)="onClear()" type="reset">Clear</button>
+                </div>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
 </form>
