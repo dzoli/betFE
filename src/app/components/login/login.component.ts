@@ -11,6 +11,8 @@ import { FormService } from 'src/app/shared/services/form/form.service';
 })
 export class LoginComponent implements OnInit {
 
+  hide = true;
+
   constructor(private router: Router,
               private auth: AuthService,
               private notify: NotifyService,

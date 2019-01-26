@@ -18,12 +18,15 @@
     <mat-grid-list cols="1" rowHeight="500px">
         <mat-grid-tile>
             <div class="controles-container">
-                <mat-form-field>
-                    <input formControlName="email" matInput placeholder="Email*" #email>
+                <mat-form-field appearance="outline">
+                    <mat-label>Email...</mat-label>
+                    <input formControlName="email" matInput placeholder="Email*" #email >
                     <mat-error>Invalid email address.</mat-error>
                 </mat-form-field>
-                <mat-form-field>
-                    <input formControlName="password" type="password" matInput placeholder="Password*" #password>
+                <mat-form-field appearance="outline">
+                    <mat-label>Password...</mat-label>
+                    <input formControlName="password" type="password" matInput placeholder="Password*" #password [type]="hide ? 'password' : 'text'">
+                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     <mat-error>Invalid password.</mat-error>
                 </mat-form-field>
                 <div class="button-row">
