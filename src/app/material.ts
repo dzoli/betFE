@@ -16,8 +16,10 @@ import {MAT_SNACK_BAR_DEFAULT_OPTIONS} from '@angular/material';
     Material.MatSnackBarModule,
     Material.MatTableModule,
     Material.MatIconModule,
+    Material.MatCardModule,
   ],
   exports: [
+    Material.MatCardModule,
     Material.MatIconModule,
     Material.MatTableModule,
     Material.MatSnackBarModule,

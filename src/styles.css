@@ -30,3 +30,10 @@ mat-radio-group mat-radio-button {
 .button-row  button{
   margin-left: 20px;
 }
+
+.login-card{
+  margin-top: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 800px;
+}
