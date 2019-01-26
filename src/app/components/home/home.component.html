@@ -1,40 +1,53 @@
 <h2>Games:</h2>
 <table class="table table-striped">
-    <thead class="bg-light">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Time</th>
-            <th scope="col">City</th>
-            <th scope="col">Home</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-            <th scope="col">Away</th>
-            <th>1</th>
-            <th>X</th>
-            <th>2</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let g of data.games let idx = index;">
-            <td scope="row">{{idx + 1}}</td>
-            <td>{{g.time | date}}</td>
-            <td>{{g.city}}</td>
-            <td>{{g.team1.name}}</td>
-            <td>{{g.homeScore}}</td>
-            <td>-</td>
-            <td>{{g.awayScore}}</td>
-            <td>{{g.team2.name}}</td>
-            <td>
-                <button (click)="addToTicket(g.team1.name, g.team2.name, g.idMatch, g.homeOdd, 1)" class="btn btn-primary" [disabled]="!auth.isAuthenticated">1 ({{g.homeOdd | number : '1.2-2'}}) </button>
-            </td>
-            <td>
-                <button (click)="addToTicket(g.team1.name, g.team2.name, g.idMatch, g.egalOdd, 0)" class="btn btn-primary" [disabled]="!auth.isAuthenticated">X ({{g.egalOdd | number : '1.2-2'}}) </button>
-            </td>
-            <td>
-                <button (click)="addToTicket(g.team1.name, g.team2.name, g.idMatch, g.awayOdd, 2)" class="btn btn-primary" [disabled]="!auth.isAuthenticated">2 ({{g.awayOdd | number : '1.2-2'}}) </button>
-            </td>
-        </tr>
-    </tbody>
+  <thead class="bg-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Time</th>
+      <th scope="col">City</th>
+      <th scope="col">Home</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col">Away</th>
+      <th>1</th>
+      <th>X</th>
+      <th>2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let g of data.games let idx = index;">
+      <td scope="row">{{idx + 1}}</td>
+      <td>{{g.time | date}}</td>
+      <td>{{g.city}}</td>
+      <td>{{g.team1.name}}</td>
+      <td>{{g.homeScore}}</td>
+      <td>-</td>
+      <td>{{g.awayScore}}</td>
+      <td>{{g.team2.name}}</td>
+      <td>
+        <button (click)="addToTicket(g.team1.name, g.team2.name, g.idMatch, g.homeOdd, 1)" class="btn btn-primary"
+          [disabled]="!auth.isAuthenticated">1 ({{g.homeOdd | number : '1.2-2'}}) </button>
+      </td>
+      <td>
+        <button (click)="addToTicket(g.team1.name, g.team2.name, g.idMatch, g.egalOdd, 0)" class="btn btn-primary"
+          [disabled]="!auth.isAuthenticated">X ({{g.egalOdd | number : '1.2-2'}}) </button>
+      </td>
+      <td>
+        <button (click)="addToTicket(g.team1.name, g.team2.name, g.idMatch, g.awayOdd, 2)" class="btn btn-primary"
+          [disabled]="!auth.isAuthenticated">2 ({{g.awayOdd | number : '1.2-2'}}) </button>
+      </td>
+    </tr>
+  </tbody>
 </table>
-<button (click)="onCreate()"></button>
+
+<!-- pay ticket -->
+
+<div class="pay-ticket">
+  <mat-form-field appearance="outline">
+    <mat-label>Place bet</mat-label>
+    <input id="amount" [(ngModel)]="sum" matInput placeholder="Enter the money amount">
+    <mat-icon matSuffix>attach_money</mat-icon>
+  </mat-form-field>
+  <button mat-stroked-button (click)="payTicket()" class="ml-20">Pay ticket</button>
+</div>

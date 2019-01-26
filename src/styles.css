@@ -41,3 +41,7 @@ mat-radio-group mat-radio-button {
 mat-icon {
   color: white;
 }
+
+pay-ticket{
+  margin: 60px;
+}

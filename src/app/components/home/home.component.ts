@@ -9,42 +9,47 @@ import { Observable } from 'rxjs';
     templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
-
+    // curr user
     public user: any;
-    public deltaCredit: number;
+
+    // games from service
+    public data = { games: [] };
+
+    // user ticket games
     public games: Array<{ idMatch: number, result: number, team1: string, team2: string, odd: number }> =
-     new Array<{ idMatch: number, result: number, team1: string, team2: string, odd: number }>();
-    public data = { games: [] }; // all games from service (date will be added later)
+        new Array<{ idMatch: number, result: number, team1: string, team2: string, odd: number }>();
+
+    public sum: number;
+    private numberOfGames: number;
 
     constructor(private router: Router,
-                public auth: AuthService,
-                private ticket: TicketService) {
-        this.user = auth.user;
+        public auth: AuthService,
+        private ticket: TicketService) {
+
+        this.user = this.auth.user;
         this.ticket.getGames()
             .subscribe((res: any) => this.data = res);
-
-
-    }
-
-    public addToTicket(team1Name: string, team2Name: string, idMatch: string, odd: string, id: number) {
-
-    }
-
-    public addCredit() {
-        this.ticket.addCredit(this.deltaCredit)
-        .subscribe((res: any) => this.auth.setCurrentCredit(res));
-    }
-
-    public openDialog() {
-
-    }
-
-    public onCreate() {
 
     }
 
     ngOnInit() {
-        // this.ticket.getGames()
-        //         .subscribe((res: any) => t his.data = res);
     }
+
+    public addToTicket(team1: string, team2: string, idMatch: number, odd: number, result: number) {
+        this.games.push({
+            'team1': team1,
+            'team2': team2,
+            'idMatch': idMatch,
+            'odd': odd,
+            'result': result
+        });
+        this.numberOfGames++;
+    }
+
+    public payTicket() {
+        console.log('games == ', this.games);
+        console.log('user == ', this.user);
+        console.log('sum == ', this.sum);
+    }
+
 }
