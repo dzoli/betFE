@@ -11,6 +11,7 @@ import { FormService } from 'src/app/shared/services/form/form.service';
 })
 export class RegisterComponent implements OnInit {
 
+  public hide = true;
   public user: User = new User();
   public errors: any[] = [];
 

@@ -2,30 +2,36 @@
 <h3>Register</h3>
 <hr>
 <form [formGroup]="form.registerForm" class="normal-form">
-  <mat-grid-list cols="1" rowHeight="500px">
+  <mat-grid-list cols="1" rowHeight="600px">
     <mat-grid-tile>
       <div class="controles-container">
-        <mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>First name...</mat-label>
           <input formControlName="firstName" matInput placeholder="First name*" [(ngModel)]="user.name">
           <mat-error>This field is mandatory.</mat-error>
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Last name...</mat-label>
           <input formControlName="lastName" matInput placeholder="Last name*" [(ngModel)]="user.surname">
           <mat-error>This field is mandatory.</mat-error>
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Username...</mat-label>
           <input formControlName="username" matInput placeholder="Username*" [(ngModel)]="user.username">
           <mat-error *ngIf="form.registerForm.controls['username'].errors?.minlength">Username must be at least 2
             characters long.</mat-error>
           <mat-error *ngIf="form.registerForm.controls['username'].errors?.required">This field is mandatory.</mat-error>
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Email...</mat-label>
           <input formControlName="email" matInput placeholder="Email*" type="email" user.email [(ngModel)]="user.email">
           <mat-error *ngIf="form.registerForm.controls['email'].errors?.email">Please provide valid email address.</mat-error>
           <mat-error *ngIf="form.registerForm.controls['email'].errors?.required">This field is mandatory.</mat-error>
         </mat-form-field>
-        <mat-form-field>
-          <input formControlName="password"  pattern="\w*[0-9]{1,}\w*" matInput placeholder="Password*" type="password" [(ngModel)]="user.password">
+        <mat-form-field appearance="outline">
+          <mat-label>Password...</mat-label>
+          <input formControlName="password"  pattern="\w*[0-9]{1,}\w*" matInput placeholder="Password*" type="password" [(ngModel)]="user.password" #password [type]="hide ? 'password' : 'text'">
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           <mat-error *ngIf="form.registerForm.controls['password'].errors?.pattern">Password must contain at least on
             number.</mat-error>
           <mat-error *ngIf="form.registerForm.controls['password'].errors?.minlength">Password must be at least 8
