@@ -16,6 +16,7 @@ import { NotifyService } from './shared/services/notify/notify.service';
 import { MaterialModule } from './material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormService } from './shared/services/form/form.service';
+import { DetailComponent } from './components/detail/detail.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { FormService } from './shared/services/form/form.service';
     RegisterComponent,
     LoginComponent,
     HomeComponent,
-    ForumComponent
+    ForumComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +41,9 @@ import { FormService } from './shared/services/form/form.service';
     ReactiveFormsModule
   ],
   providers: [NotifyService, FormService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    DetailComponent
+  ],
 })
 export class AppModule { }

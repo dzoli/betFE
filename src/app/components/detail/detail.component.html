@@ -1,0 +1,16 @@
+<!-- add credit -->
+<div>
+  <h2 class="text-center">Welcome {{ auth.user?.username }}</h2>
+  <hr>
+  <h3>Email: {{auth.user?.email}}</h3>
+  <h3>First name: {{auth.user?.firstname}}</h3>
+  <h3>Last name: {{auth.user?.lastname}}</h3>
+  <h3>Credit: <mark>{{auth.user?.credit}}</mark></h3>
+  <div class="input-group mt-20 mb-6">
+    <input type="text" class="form-control" placeholder="Add credit:..." aria-label="Add credit:..." aria-describedby="basic-addon1"
+      [(ngModel)]="deltaCredit">
+    <span class="input-group-btn">
+      <button class="btn btn-outline-secondary" type="button" (click)="addCredit()">Add</button>
+    </span>
+  </div>
+</div>

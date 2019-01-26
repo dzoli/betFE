@@ -1,13 +1,3 @@
-<!-- add credit -->
-<h3 class="text-center" *ngIf="auth.isAuthenticated">Welcome {{ auth.user?.username }} Credit: <mark>{{ auth.user.credit}}</mark> </h3>
-<div class="input-group mb-6" *ngIf="auth.isAuthenticated">
-    <input type="text" class="form-control" placeholder="Add credit:..." aria-label="Add credit:..." aria-describedby="basic-addon1"
-        [(ngModel)]="deltaCredit">
-    <span class="input-group-btn">
-        <button class="btn btn-outline-secondary" type="button" (click)="addCredit()">Add</button>
-    </span>
-</div>
-
 <h2>Games:</h2>
 <table class="table table-striped">
     <thead class="bg-light">

@@ -1,15 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { MatDialog } from '@angular/material';
+import { DetailComponent } from '../detail/detail.component';
 
 @Component({
-  selector: 'app-layout',
-  templateUrl: './layout.component.html',
+    selector: 'app-layout',
+    templateUrl: './layout.component.html',
 })
 export class LayoutComponent implements OnInit {
 
-  constructor(private auth: AuthService) { }
+    constructor(public auth: AuthService, private dialog: MatDialog) { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
+
+    openDialog() {
+      // open new component as dialg
+      this.dialog.open(DetailComponent, {
+          width: '400px'
+      });
+    }
+
 
 }

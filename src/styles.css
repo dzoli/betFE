@@ -37,3 +37,7 @@ mat-radio-group mat-radio-button {
   margin-right: auto;
   max-width: 800px;
 }
+
+mat-icon {
+  color: white;
+}
