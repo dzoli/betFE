@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Bet } from '../../models/bet.model';
 
 @Injectable({
     providedIn: 'root'
@@ -40,5 +41,20 @@ export class TicketService {
         });
     }
 
+    public saveTicket(userId: string, money: number, bets: Array<Bet>) {
+      const url = '/betWS/ticket/save';
+        return new Observable((o: any) => {
+            this.http.post(url, {
+              'userKey': userId,
+              'sum': money,
+              'bets': bets
+            }).subscribe((data) => {
+                o.next(data);
+                return o.complete();
+            }, (err) => {
+                return o.error(err);
+            });
+        });
+    }
 
 }
