@@ -34,6 +34,7 @@ export class HomeComponent implements OnInit {
     private ticket: TicketService) {
     this.user = this.auth.user;
     this.totalOdd = 1.;
+    this.sum = 0;
     this.ticket.getGames()
       .subscribe((res: any) => {
         this.data = res;
@@ -67,7 +68,6 @@ export class HomeComponent implements OnInit {
     this.totalOdd = 1.;
     this.bets = new Array<Bet>();
     this.sum = 0;
-    console.log('ticket dialog closed.');
   }
 
   public openDialog(): void {
