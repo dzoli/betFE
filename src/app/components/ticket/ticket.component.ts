@@ -43,6 +43,7 @@ export class TicketComponent implements OnInit {
   }
 
   onNoClick(): void {
+    this.notify.Error('Info', 'Ticket dissmised.');
     this.dialogRef.close();
   }
 
