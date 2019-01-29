@@ -23,14 +23,14 @@ export class HomeComponent implements OnInit {
   public isDisabled: Array<boolean>;
 
   public sum: number;
-  private totlaOdd: number;
+  private totalOdd: number;
 
   constructor(private router: Router,
     public auth: AuthService,
     private notify: NotifyService,
     private ticket: TicketService) {
     this.user = this.auth.user;
-    this.totlaOdd = 1.;
+    this.totalOdd = 1.;
     this.ticket.getGames()
       .subscribe((res: any) => {
         this.data = res;
@@ -52,16 +52,16 @@ export class HomeComponent implements OnInit {
     } else {
       this.isDisabled[idx] = false;
     }
-    this.totlaOdd *= odd;
+    this.totalOdd *= odd;
 
-    console.log('odd', this.totlaOdd);
+    console.log('odd', this.totalOdd);
   }
 
   public clear() {
     for (let i = 0; i < this.data.games.length; i++) {
           this.isDisabled[i] = false;
     }
-    this.totlaOdd = 1.;
+    this.totalOdd = 1.;
     this.bets = new Array<Bet>();
     this.sum = 0;
   }
@@ -72,7 +72,7 @@ export class HomeComponent implements OnInit {
     console.log('sum == ', this.sum);
     console.log('disabled btns == ', this.isDisabled);
     console.log('total odd == ', this.isDisabled);
-    this.ticket.saveTicket(this.user._id, this.sum, this.bets, this.totlaOdd)
+    this.ticket.saveTicket(this.user._id, this.sum, this.bets, this.totalOdd)
       .subscribe((res: any) => {
         this.notify.Success('Success', 'Check ticket status at history.');
       },

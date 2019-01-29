@@ -93,12 +93,12 @@
       <mat-label>Place bet</mat-label>
       <input [(ngModel)]="sum" matInput placeholder="Enter the money amount" [disabled]="!auth.isAuthenticated">
       <mat-icon class="money" matSuffix>attach_money</mat-icon>
-      
     </mat-form-field>
+     <mat-label *ngIf="this.totalOdd != 1 && this.sum!=null "> x {{this.totalOdd}} = {{(this.totalOdd * this.sum).toFixed(2)}}$</mat-label>
     <mat-card-actions>
-      <mat-grid-list cols="2" rowHeight="8:1">
+      <mat-grid-list cols="2" rowHeight="8:1" >
   
-         <mat-grid-tile><button mat-stroked-button (click)="payTicket()" [disabled]="!auth.isAuthenticated">Pay ticket</button></mat-grid-tile>
+         <mat-grid-tile><button mat-stroked-button (click)="payTicket()" [disabled]="!auth.isAuthenticated || !(this.totalOdd != 1 && this.sum!=null)">Pay ticket</button></mat-grid-tile>
         <mat-grid-tile><button mat-stroked-button (click)="clear()" [disabled]="!auth.isAuthenticated">Clear</button></mat-grid-tile>
       </mat-grid-list>
     </mat-card-actions>
