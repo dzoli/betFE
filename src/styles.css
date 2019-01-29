@@ -45,6 +45,8 @@ mat-icon {
 table {
   width: 100%;
   margin: 40px;
+   margin-left: auto;
+  margin-right: auto;
 }
 
 .status-ok {

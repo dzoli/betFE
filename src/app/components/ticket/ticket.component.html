@@ -1,0 +1,50 @@
+<div *ngIf="this.bets.length > 0 && this.money != 0">
+  <table class="table">
+    <thead class="bg-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Time</th>
+        <th scope="col">Home</th>
+        <th scope="col"></th>
+        <th scope="col">Away</th>
+        <th scope="col">Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let g of this.bets let idx = index;">
+        <td scope="row">{{idx + 1}}</td>
+        <td>{{g.time | date}}</td>
+        <td>{{g.home}}</td>
+        <td>-</td>
+        <td>{{g.away}}</td>
+        <td>
+          <div *ngIf="g.bet===0">
+            X
+          </div>
+          <div *ngIf="g.bet!==0">
+            {{g.bet}}
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <hr>
+  <div>
+    Total odd: {{this.totalOdd | number:'1.2-2'}}
+    Money: {{this.money | number:'1.2-2'}}
+    Potentional winnings: {{this.potentionalWin | currency}}
+  </div>
+  <mat-grid-list cols="2" rowHeight="8:1">
+    <mat-grid-tile>
+        <button mat-stroked-button (click)="payTicket()" [disabled]="!auth.isAuthenticated">Pay ticket</button>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-stroked-button (click)="onNoClick()" [disabled]="!auth.isAuthenticated">Cancel</button></mat-grid-tile>
+  </mat-grid-list>
+</div>
+<div *ngIf="this.bets.length == 0">
+  Please choose at least one game.
+</div>
+<div *ngIf="this.money == 0">
+  Minimum cache amount is 10$.
+</div>

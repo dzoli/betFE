@@ -5,6 +5,8 @@ import { TicketService } from 'src/app/shared/services/ticket/ticket.service';
 import { Observable } from 'rxjs';
 import { Bet } from 'src/app/shared/models/bet.model';
 import { NotifyService } from 'src/app/shared/services/notify/notify.service';
+import { MatDialog } from '@angular/material';
+import { TicketComponent } from '../ticket/ticket.component';
 
 @Component({
   selector: 'app-home',
@@ -23,9 +25,10 @@ export class HomeComponent implements OnInit {
   public isDisabled: Array<boolean>;
 
   public sum: number;
-  private totalOdd: number;
+  public totalOdd: number;
 
   constructor(private router: Router,
+    private dialog: MatDialog,
     public auth: AuthService,
     private notify: NotifyService,
     private ticket: TicketService) {
@@ -44,7 +47,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  public addToTicket(idMatch: string, result: number, idx: number, odd: number, home: string, away:string, time: string) {
+  public addToTicket(idMatch: string, result: number, idx: number, odd: number, home: string, away: string, time: string) {
     const bet = new Bet(idMatch, result, home, away, time);
     this.bets.push(bet);
     if (this.bets.includes(bet)) {
@@ -59,11 +62,24 @@ export class HomeComponent implements OnInit {
 
   public clear() {
     for (let i = 0; i < this.data.games.length; i++) {
-          this.isDisabled[i] = false;
+      this.isDisabled[i] = false;
     }
     this.totalOdd = 1.;
     this.bets = new Array<Bet>();
     this.sum = 0;
+    console.log('ticket dialog closed.');
+  }
+
+  public openDialog(): void {
+      const dialogRef = this.dialog.open(TicketComponent, {
+        width: '850px',
+        data: { bets: this.bets, odd: this.totalOdd, money: this.sum }
+      });
+
+      dialogRef.afterClosed().subscribe(res => {
+
+        this.clear();
+      });
   }
 
   public payTicket() {

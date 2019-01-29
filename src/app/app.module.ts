@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormService } from './shared/services/form/form.service';
 import { DetailComponent } from './components/detail/detail.component';
 import { HistoryComponent } from './components/history/history.component';
+import { TicketComponent } from './components/ticket/ticket.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { HistoryComponent } from './components/history/history.component';
     HomeComponent,
     ForumComponent,
     DetailComponent,
-    HistoryComponent
+    HistoryComponent,
+    TicketComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,8 @@ import { HistoryComponent } from './components/history/history.component';
   providers: [NotifyService, FormService],
   bootstrap: [AppComponent],
   entryComponents: [
-    DetailComponent
+    DetailComponent,
+    TicketComponent
   ],
 })
 export class AppModule { }
