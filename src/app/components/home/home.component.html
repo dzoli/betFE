@@ -26,17 +26,17 @@
       <td>{{g.awayScore}}</td>
       <td>{{g.team2.name}}</td>
       <td>
-        <button (click)="addToTicket(g._id, 1, idx, g.homeOdd)" class="btn btn-primary" [disabled]="isDisabled[idx]">1
+        <button (click)="addToTicket(g._id, 1, idx, g.homeOdd, g.team1.name, g.team2.name, g.time)" class="btn btn-primary" [disabled]="isDisabled[idx]">1
           ({{g.homeOdd
           | number : '1.2-2'}}) </button>
       </td>
       <td>
-        <button (click)="addToTicket(g._id, 0, idx, g.egalOdd)" class="btn btn-primary" [disabled]="isDisabled[idx]">X
+        <button (click)="addToTicket(g._id, 0, idx, g.egalOdd, g.team1.name, g.team2.name, g.time)" class="btn btn-primary" [disabled]="isDisabled[idx]">X
           ({{g.egalOdd
           | number : '1.2-2'}}) </button>
       </td>
       <td>
-        <button (click)="addToTicket(g._id, 2, idx, g.awayOdd)" class="btn btn-primary" [disabled]="isDisabled[idx]">2
+        <button (click)="addToTicket(g._id, 2, idx, g.awayOdd, g.team1.name, g.team2.name, g.time)" class="btn btn-primary" [disabled]="isDisabled[idx]">2
           ({{g.awayOdd
           | number : '1.2-2'}}) </button>
       </td>
@@ -60,13 +60,44 @@
   </mat-card-header>
   <hr>
   <mat-card-content>
+  	<table class="table-striped" *ngIf="this.bets.length > 0">
+  		  <thead class="bg-light">
+   		    <tr>
+              <th scope="col">#</th>
+      		  <th scope="col">Time</th>
+      		  <th scope="col">Home</th>
+    		    <th scope="col"></th>
+  		      <th scope="col">Away</th>
+  		      <th scope="col">Result</th>
+ 		    </tr>
+  		  </thead>
+  		  <tbody>
+            <tr *ngFor="let g of this.bets let idx = index;">
+              <td scope="row">{{idx + 1}}</td>
+              <td>{{g.time | date}}</td>
+              <td>{{g.home}}</td>
+              <td>-</td>
+              <td>{{g.away}}</td>
+              <td>
+              	<div *ngIf="g.bet===0">
+              		X
+              	</div>
+              	<div *ngIf="g.bet!==0">
+              		{{g.bet}}
+              	</div>
+              </td>
+           	</tr>
+ 		  </tbody>
+	    </table>
     <mat-form-field id="amount" appearance="outline">
       <mat-label>Place bet</mat-label>
       <input [(ngModel)]="sum" matInput placeholder="Enter the money amount" [disabled]="!auth.isAuthenticated">
       <mat-icon class="money" matSuffix>attach_money</mat-icon>
+      
     </mat-form-field>
     <mat-card-actions>
       <mat-grid-list cols="2" rowHeight="8:1">
+  
          <mat-grid-tile><button mat-stroked-button (click)="payTicket()" [disabled]="!auth.isAuthenticated">Pay ticket</button></mat-grid-tile>
         <mat-grid-tile><button mat-stroked-button (click)="clear()" [disabled]="!auth.isAuthenticated">Clear</button></mat-grid-tile>
       </mat-grid-list>

@@ -44,8 +44,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  public addToTicket(idMatch: string, result: number, idx: number, odd: number) {
-    const bet = new Bet(idMatch, result);
+  public addToTicket(idMatch: string, result: number, idx: number, odd: number, home: string, away:string, time: string) {
+    const bet = new Bet(idMatch, result, home, away, time);
     this.bets.push(bet);
     if (this.bets.includes(bet)) {
       this.isDisabled[idx] = true;
