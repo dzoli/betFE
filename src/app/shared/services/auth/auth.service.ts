@@ -28,13 +28,13 @@ export class AuthService {
   public register(user: User) {
     return new Observable((o) => {
       this.http.post('/betWS/user/save', {
-        "username": user.username,
-        "password": user.password,
-        "email": user.email,
-        "lastname": user.surname,
-        "firstname": user.name,
-        "credit": 0.0,
-        "role": "user"
+        'username': user.username,
+        'password': user.password,
+        'email': user.email,
+        'lastname': user.surname,
+        'firstname': user.name,
+        'credit': 0.0,
+        'role': 'user'
       }, this.head).subscribe(() => {
         this.router.navigateByUrl('/login');
       }, (err) => {

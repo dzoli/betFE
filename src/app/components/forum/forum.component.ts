@@ -20,7 +20,7 @@ export class ForumComponent implements OnInit {
         private router: Router) {
 
         this.forumService.getThemes()
-            .subscribe(res => { this.data = res; console.log(res) });
+            .subscribe(res => { this.data = res; console.log(res); });
         this.idUser = authService.getLoggedUser()._id;
     }
 

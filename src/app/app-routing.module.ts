@@ -7,6 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { from } from 'rxjs';
 import { HomeComponent } from './components/home/home.component';
 import { ForumComponent } from './components/forum/forum.component';
+import { HistoryComponent } from './components/history/history.component';
 
 
 const routes: Routes = [
@@ -32,8 +33,11 @@ const routes: Routes = [
     {
         path: 'forum',
         component: ForumComponent
+    },
+    {
+        path: 'history',
+        component: HistoryComponent
     }
-
 ];
 
 @NgModule({

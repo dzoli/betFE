@@ -26,17 +26,17 @@
       <td>{{g.awayScore}}</td>
       <td>{{g.team2.name}}</td>
       <td>
-        <button (click)="addToTicket(g._id, 1, idx)" class="btn btn-primary" [disabled]="isDisabled[idx]">1
+        <button (click)="addToTicket(g._id, 1, idx, g.homeOdd)" class="btn btn-primary" [disabled]="isDisabled[idx]">1
           ({{g.homeOdd
           | number : '1.2-2'}}) </button>
       </td>
       <td>
-        <button (click)="addToTicket(g._id, 0, idx)" class="btn btn-primary" [disabled]="isDisabled[idx]">X
+        <button (click)="addToTicket(g._id, 0, idx, g.egalOdd)" class="btn btn-primary" [disabled]="isDisabled[idx]">X
           ({{g.egalOdd
           | number : '1.2-2'}}) </button>
       </td>
       <td>
-        <button (click)="addToTicket(g._id, 2, idx)" class="btn btn-primary" [disabled]="isDisabled[idx]">2
+        <button (click)="addToTicket(g._id, 2, idx, g.awayOdd)" class="btn btn-primary" [disabled]="isDisabled[idx]">2
           ({{g.awayOdd
           | number : '1.2-2'}}) </button>
       </td>
@@ -63,8 +63,13 @@
     <mat-form-field id="amount" appearance="outline">
       <mat-label>Place bet</mat-label>
       <input [(ngModel)]="sum" matInput placeholder="Enter the money amount" [disabled]="!auth.isAuthenticated">
-      <mat-icon matSuffix>attach_money</mat-icon>
+      <mat-icon class="money" matSuffix>attach_money</mat-icon>
     </mat-form-field>
-    <button mat-stroked-button (click)="payTicket()" class="pay-ticket" [disabled]="!auth.isAuthenticated">Pay ticket</button>
+    <mat-card-actions>
+      <mat-grid-list cols="2" rowHeight="8:1">
+         <mat-grid-tile><button mat-stroked-button (click)="payTicket()" [disabled]="!auth.isAuthenticated">Pay ticket</button></mat-grid-tile>
+        <mat-grid-tile><button mat-stroked-button (click)="clear()" [disabled]="!auth.isAuthenticated">Clear</button></mat-grid-tile>
+      </mat-grid-list>
+    </mat-card-actions>
   </mat-card-content>
 </mat-card>

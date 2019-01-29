@@ -23,13 +23,14 @@ export class HomeComponent implements OnInit {
   public isDisabled: Array<boolean>;
 
   public sum: number;
-  private numberOfGames: number;
+  private totlaOdd: number;
 
   constructor(private router: Router,
     public auth: AuthService,
     private notify: NotifyService,
     private ticket: TicketService) {
     this.user = this.auth.user;
+    this.totlaOdd = 1.;
     this.ticket.getGames()
       .subscribe((res: any) => {
         this.data = res;
@@ -43,7 +44,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  public addToTicket(idMatch: string, result: number, idx: number) {
+  public addToTicket(idMatch: string, result: number, idx: number, odd: number) {
     const bet = new Bet(idMatch, result);
     this.bets.push(bet);
     if (this.bets.includes(bet)) {
@@ -51,15 +52,27 @@ export class HomeComponent implements OnInit {
     } else {
       this.isDisabled[idx] = false;
     }
-    this.numberOfGames++;
+    this.totlaOdd *= odd;
+
+    console.log('odd', this.totlaOdd);
+  }
+
+  public clear() {
+    for (let i = 0; i < this.data.games.length; i++) {
+          this.isDisabled[i] = false;
+    }
+    this.totlaOdd = 1.;
+    this.bets = new Array<Bet>();
+    this.sum = 0;
   }
 
   public payTicket() {
     console.log('games == ', this.bets);
     console.log('user == ', this.user);
     console.log('sum == ', this.sum);
-    console.log('sum == ', this.isDisabled);
-    this.ticket.saveTicket(this.user._id, this.sum, this.bets)
+    console.log('disabled btns == ', this.isDisabled);
+    console.log('total odd == ', this.isDisabled);
+    this.ticket.saveTicket(this.user._id, this.sum, this.bets, this.totlaOdd)
       .subscribe((res: any) => {
         this.notify.Success('Success', 'Check ticket status at history.');
       },

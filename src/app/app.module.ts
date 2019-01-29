@@ -17,6 +17,7 @@ import { MaterialModule } from './material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormService } from './shared/services/form/form.service';
 import { DetailComponent } from './components/detail/detail.component';
+import { HistoryComponent } from './components/history/history.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { DetailComponent } from './components/detail/detail.component';
     LoginComponent,
     HomeComponent,
     ForumComponent,
-    DetailComponent
+    DetailComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,
