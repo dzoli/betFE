@@ -1,4 +1,4 @@
-<div *ngIf="this.bets.length > 0 && this.money != 0">
+<div *ngIf="this.bets.length > 0 && this.money >= 10">
   <table class="table">
     <thead class="bg-light">
       <tr>
@@ -45,6 +45,6 @@
 <div *ngIf="this.bets.length == 0">
   Please choose at least one game.
 </div>
-<div *ngIf="this.money == 0">
+<div *ngIf="this.money < 10">
   Minimum cache amount is 10$.
 </div>

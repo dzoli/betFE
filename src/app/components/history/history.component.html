@@ -33,6 +33,17 @@
     </td>
   </ng-container>
 
+  <!-- Total odd column -->
+  <ng-container matColumnDef="Games">
+    <th mat-header-cell *matHeaderCellDef> Games </th>
+    <td mat-cell *matCellDef="let element">
+        <button mat-icon-button (click)="openDialog(element.bets)">
+            <mat-icon class="money">view_list</mat-icon>
+        </button>
+    </td>
+  </ng-container>
+
+
   <tr mat-header-row *matHeaderRowDef="columns"></tr>
   <tr mat-row *matRowDef="let row; columns: columns;"></tr>
 </table>

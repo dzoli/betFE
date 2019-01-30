@@ -19,6 +19,7 @@ import { FormService } from './shared/services/form/form.service';
 import { DetailComponent } from './components/detail/detail.component';
 import { HistoryComponent } from './components/history/history.component';
 import { TicketComponent } from './components/ticket/ticket.component';
+import { GamesComponent } from './components/games/games.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { TicketComponent } from './components/ticket/ticket.component';
     ForumComponent,
     DetailComponent,
     HistoryComponent,
-    TicketComponent
+    TicketComponent,
+    GamesComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,8 @@ import { TicketComponent } from './components/ticket/ticket.component';
   bootstrap: [AppComponent],
   entryComponents: [
     DetailComponent,
-    TicketComponent
+    TicketComponent,
+    GamesComponent,
   ],
 })
 export class AppModule { }

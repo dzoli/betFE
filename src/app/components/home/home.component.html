@@ -47,7 +47,7 @@
   </tbody>
 </table>
 
-<mat-card class="login-card bg-light">
+<mat-card class="login-card bg-light" *ngIf="auth.isAuthenticated">
   <mat-card-header>
     <mat-card-title>
       <span class="md-headline h2">Finish ticket</span>

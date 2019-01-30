@@ -82,19 +82,6 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  public payTicket() {
-    console.log('games == ', this.bets);
-    console.log('user == ', this.user);
-    console.log('sum == ', this.sum);
-    console.log('disabled btns == ', this.isDisabled);
-    console.log('total odd == ', this.isDisabled);
-    this.ticket.saveTicket(this.user._id, this.sum, this.bets, this.totalOdd)
-      .subscribe((res: any) => {
-        this.notify.Success('Success', 'Check ticket status at history.');
-      },
-        (error: any) => {
-          this.notify.Error('Info', error.error);
-        });
-  }
+
 
 }

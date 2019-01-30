@@ -58,10 +58,12 @@ export class TicketService {
     });
   }
 
-  public allTickets() {
-    const url = '/betWS/ticket/all';
+  public allTicketsForUser() {
+    const url = '/betWS/ticket/?id=' + this.auth.getLoggedUser()._id;
+    console.log(url);
     return new Observable((o: any) => {
-      this.http.get(url, {}).subscribe((data) => {
+      this.http.get(url, {
+      }).subscribe((data) => {
         o.next(data);
         return o.complete();
       }, (err) => {
