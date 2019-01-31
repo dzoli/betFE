@@ -9,7 +9,7 @@ import { Bet } from 'src/app/shared/models/bet.model';
 export class GamesComponent implements OnInit {
 
   public bets: Array<any>;
-  public columns: string[] = ['Date', 'Home', 'Away', 'Home_score', 'Away_score'];
+  public columns: string[] = ['Date', 'Home', 'Away', 'Home_score', 'Away_score', 'Result', 'Status'];
 
   constructor(public dialogRef: MatDialogRef<GamesComponent>,
     @Inject(MAT_DIALOG_DATA) public data) {
